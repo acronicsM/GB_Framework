@@ -31,12 +31,10 @@ class Framework:
         if method == 'GET':
             request_params = GetRequests().get_request_params(environ)
             request['request_params'] = Framework.decode_value(request_params)
-            print(f'Нам пришли GET-параметры:'
-                  f' {Framework.decode_value(request_params)}')
+            print(f'Нам пришли GET-параметры: {Framework.decode_value(request_params)}')
 
         view = self.routes.get(path, PageNotFound())
 
-        request = dict()
         for i in self.fronts:
             i(request)
 
