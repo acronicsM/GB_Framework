@@ -1,20 +1,24 @@
 from framework.templator import render
 from framework.common import FactoryCreate
 from patterns.creational_patterns import Engine, Logger
+from patterns.structural_patterns import AppRoute, Debug
 
 site = Engine()
 logger = Logger('main')
 
+@AppRoute(url='/')
 class Index:
     def __call__(self, request):
         return '200 OK', render('index.html', date=request.get('date', None))
 
 
+@AppRoute(url='/page/')
 class Page:
     def __call__(self, request):
         return '200 OK', render('page.html', date=request.get('date', None))
 
 
+@AppRoute(url='/examples/')
 class Examples:
 
     def __call__(self, request):
@@ -44,12 +48,13 @@ class Examples:
                                 cat_id=id_category)
 
 
+@AppRoute(url='/contact/')
 class Contact:
     def __call__(self, request):
         return '200 OK', render('contact.html', date=request.get('date', None))
 
 
+@AppRoute(url='/another_page/')
 class Another:
     def __call__(self, request):
         return '200 OK', render('another_page.html', date=request.get('date', None))
-
