@@ -1,6 +1,7 @@
 from quopri import decodestring
 from framework.frame_requests import GetRequests, PostRequests
 
+
 class PageNotFound:
     def __call__(self, request):
         return '404 WHAT', '404 PAGE Not Found'
