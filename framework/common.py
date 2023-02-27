@@ -1,4 +1,6 @@
 from patterns.creational_patterns import Logger, Engine
+from patterns.behavioral_patterns import Subject
+from patterns.creational_patterns import CourseFactory
 
 logger = Logger('main')
 class CreateCategory:
@@ -17,6 +19,8 @@ class CreateCategory:
 
         site.categories.append(new_category)
 
+        return new_category
+
 
 class CreateCourse:
     @staticmethod
@@ -33,6 +37,8 @@ class CreateCourse:
         new_course = site.create_course('record', name, category)
 
         site.courses.append(new_course)
+
+        return new_course
 
 
 FactoryCreate = {
